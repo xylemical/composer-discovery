@@ -1,0 +1,44 @@
+{
+  "name": "xylemical/composer-discovery",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "description": "Provides a composer plugin for discovery of items within packages.",
+  "keywords": [
+    "composer-plugin",
+    "discovery"
+  ],
+  "homepage": "https://github.com/xylemical/composer-discovery",
+  "autoload": {
+    "psr-4": {
+      "Xylemical\\Composer\\Discovery\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Xylemical\\Composer\\Discovery\\": "tests/src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.0",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "xylemical/composer-dev-bundle": "^0.1.0",
+    "composer/composer": "^2.3"
+  },
+  "scripts": {
+    "tests": "vendor/bin/phpunit && vendor/bin/phpstan analyse && vendor/bin/phpcs",
+    "test-coverage": "php -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html report"
+  },
+  "extra": {
+    "class": "Xylemical\\Composer\\Discovery\\Plugin"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "xylemical/composer-discovery": true
+    }
+  }
+}
