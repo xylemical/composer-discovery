@@ -158,10 +158,10 @@ class ComposerDiscovery {
       $this->io->write("<info>Performing discovery:</info> {$discovery->getName()}");
 
       foreach ($packages as $package) {
-        foreach ($discovery->getPaths($package) as $path) {
-          $discovery->discover($package, $path);
-        }
+        $discovery->discover($package);
       }
+
+      $discovery->complete();
     }
   }
 

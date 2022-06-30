@@ -50,14 +50,13 @@ abstract class ComposerDiscoveryBase implements ComposerDiscoveryInterface {
   /**
    * {@inheritdoc}
    */
-  public function getPaths(ComposerPackage $package): array {
-    return [];
+  public function discover(ComposerPackage $package): void {
   }
 
   /**
    * {@inheritdoc}
    */
-  public function discover(ComposerPackage $package, string $path): void {
+  public function complete(): void {
   }
 
 }

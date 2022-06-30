@@ -33,24 +33,16 @@ interface ComposerDiscoveryInterface {
   public function getName(): string;
 
   /**
-   * Get paths.
+   * Discover items within the package.
    *
    * @param \Xylemical\Composer\Discovery\ComposerPackage $package
    *   The package.
-   *
-   * @return string[]
-   *   The paths.
    */
-  public function getPaths(ComposerPackage $package): array;
+  public function discover(ComposerPackage $package): void;
 
   /**
-   * Discover an item using the path within the package.
-   *
-   * @param \Xylemical\Composer\Discovery\ComposerPackage $package
-   *   The package.
-   * @param string $path
-   *   The path within the package.
+   * Complete the discovery for all packages.
    */
-  public function discover(ComposerPackage $package, string $path): void;
+  public function complete(): void;
 
 }

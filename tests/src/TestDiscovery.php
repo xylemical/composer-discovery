@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xylemical\Composer\Discovery;
 
+use function file_exists;
+
 /**
  * A test discovery.
  */
@@ -19,16 +21,11 @@ class TestDiscovery extends ComposerDiscoveryBase {
   /**
    * {@inheritdoc}
    */
-  public function getPaths(ComposerPackage $package): array {
+  public function discover(ComposerPackage $package): void {
     $path = "{$package->getPath()}/phpstan.neon";
-    return file_exists($path) ? [$path] : [];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function discover(ComposerPackage $package, string $path): void {
-    $this->io->write("{$package->getName()}: {$path}");
+    if (file_exists($path)) {
+      $this->io->write("{$package->getName()}: {$path}");
+    }
   }
 
 }
