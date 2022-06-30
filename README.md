@@ -36,7 +36,7 @@ namespace My;
 use Xylemical\Composer\Discovery\ComposerDiscoveryBase;
 
 /**
- * Performs output of README.md for any package that defines it. 
+ * Performs output of README.md for any package that defines it.
  */
 class Discovery extends ComposerDiscoveryBase {
 
@@ -50,19 +50,14 @@ class Discovery extends ComposerDiscoveryBase {
   /**
    * {@inheritdoc}
    */
-  public function getPaths(Package $package): array {
+  public function discover(Package $package): void {
     $path = $package->getPath() . '/README.md';
-    return file_exists($path) ? [$path] : [];
+    if (file_exists($path)) {
+      $this->io->write(file_get_contents($path));
+    }
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function discover(Package $package, string $path): void {
-    $this->io->write(file_get_contents($path));
-  }
-
-} 
+}
 ```
 
 ## License
