@@ -40,6 +40,12 @@ abstract class ComposerDiscoveryBase implements ComposerDiscoveryInterface {
     $this->composer = $composer;
     $this->io = $io;
     $this->project = $project;
+
+    // Ensure autoload can take place when performing the discovery.
+    $vendor = $composer->getConfig()->get('vendor-dir');
+    if (file_exists($path = "{$vendor}/autoload.php")) {
+      require_once $path;
+    }
   }
 
   /**
